@@ -17,6 +17,9 @@
 .DS_Store
 *.pem
 
+# client source images (clean copies in public/images/)
+/clientimages/
+
 # debug
 npm-debug.log*
 yarn-debug.log*

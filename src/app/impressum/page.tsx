@@ -10,43 +10,35 @@ export default function Impressum() {
         >
           &larr; Zurück zur Startseite
         </Link>
-        <h1 className="text-4xl font-bold font-[family-name:var(--font-playfair)] text-accent mb-8">
+        <h1 className="font-[family-name:var(--font-playfair)] text-4xl sm:text-5xl font-semibold text-ink mb-8">
           Impressum
         </h1>
 
-        <div className="prose prose-lg text-gray-700 space-y-6">
+        <div className="prose prose-lg text-ink/75 space-y-6">
           <section>
-            <h2 className="text-xl font-bold text-accent">
+            <h2 className="text-xl font-bold text-ink">
               Angaben gemäß &sect; 5 ECG
             </h2>
             <p>
-              Istanbul Restaurant
+              Mia Mon Restaurant
               <br />
-              Salzburger Str. 102a
+              Schöngrubstraße 2
               <br />
-              4600 Wels, Österreich
+              4553 Schlierbach, Österreich
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-accent">Kontakt</h2>
+            <h2 className="text-xl font-bold text-ink">Kontakt</h2>
             <p>
-              Telefon: +43 660 344 05 68
+              Telefon: 04651 / 299 18 88
               <br />
-              WhatsApp:{" "}
-              <a
-                href="https://wa.me/436603440568"
-                className="text-primary hover:text-primary-dark"
-              >
-                +43 660 344 05 68
-              </a>
+              Mobil: +43 681 818 104 08
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-accent">
-              Haftungsausschluss
-            </h2>
+            <h2 className="text-xl font-bold text-ink">Haftungsausschluss</h2>
             <p>
               Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt.
               Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte
@@ -55,7 +47,7 @@ export default function Impressum() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-accent">Urheberrecht</h2>
+            <h2 className="text-xl font-bold text-ink">Urheberrecht</h2>
             <p>
               Die durch die Seitenbetreiber erstellten Inhalte und Werke auf
               diesen Seiten unterliegen dem österreichischen Urheberrecht. Die

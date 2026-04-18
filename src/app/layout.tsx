@@ -13,15 +13,15 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Istanbul Restaurant Wels | Authentische Türkische Küche",
+  title: "Mia Mon Restaurant Schlierbach | Kroatische & Italienische Küche",
   description:
-    "Istanbul Restaurant in Wels - Authentische türkische und mediterrane Küche. Kebab, Pide, Lahmacun, Baklava und mehr. Frisch zubereitet mit traditionellen Rezepten. Jetzt bestellen!",
+    "Mia Mon in Schlierbach – kroatische und italienische Küche. Ćevapčići, Schnitzel, hausgemachte Nudeln und Pizza aus dem Holzofen. Täglich frisch zubereitet.",
   keywords:
-    "Türkisches Restaurant Wels, Kebab Wels, Döner Wels, Istanbul Restaurant, Pide Wels, Lahmacun Wels, Türkische Küche Wels",
+    "Mia Mon, Restaurant Schlierbach, Kroatisches Restaurant Oberösterreich, Pizza Schlierbach, Cevapcici Kirchdorf, Holzofen Pizza",
   openGraph: {
-    title: "Istanbul Restaurant Wels",
+    title: "Mia Mon Restaurant Schlierbach",
     description:
-      "Authentische türkische und mediterrane Küche in Wels. Frisch, traditionell, lecker!",
+      "Kroatische & italienische Küche in Schlierbach. Pizza aus dem Holzofen, Ćevapčići, hausgemachte Nudeln.",
     locale: "de_AT",
     type: "website",
   },
@@ -32,8 +32,44 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    name: "Mia Mon Restaurant",
+    image: "https://mia-mon.at/images/hero-interior.jpg",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Schöngrubstraße 2",
+      addressLocality: "Schlierbach",
+      postalCode: "4553",
+      addressCountry: "AT",
+    },
+    telephone: "+4346512991888",
+    servesCuisine: ["Kroatisch", "Italienisch"],
+    priceRange: "$$",
+    openingHoursSpecification: [
+      { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday"], opens: "11:00", closes: "14:00" },
+      { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday"], opens: "17:00", closes: "22:00" },
+      { "@type": "OpeningHoursSpecification", dayOfWeek: "Friday", opens: "17:00", closes: "22:00" },
+      { "@type": "OpeningHoursSpecification", dayOfWeek: ["Saturday", "Sunday"], opens: "11:00", closes: "14:00" },
+      { "@type": "OpeningHoursSpecification", dayOfWeek: ["Saturday", "Sunday"], opens: "17:00", closes: "22:00" },
+    ],
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.8",
+      reviewCount: "31",
+    },
+    url: "https://mia-mon.at",
+  };
+
   return (
     <html lang="de" className={`${inter.variable} ${playfair.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="antialiased">{children}</body>
     </html>
   );

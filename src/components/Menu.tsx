@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { menuData } from "@/data/menu";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const allergenLabels: Record<string, string> = {
   A: "Gluten",
@@ -22,69 +23,61 @@ const allergenLabels: Record<string, string> = {
 
 export default function Menu() {
   const [activeCategory, setActiveCategory] = useState(menuData[0]?.id ?? "");
+  const { ref, isVisible } = useScrollAnimation<HTMLElement>();
 
   const activeMenu = menuData.find((c) => c.id === activeCategory);
 
   return (
-    <section id="speisekarte" className="py-16 sm:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl sm:text-5xl font-bold font-[family-name:var(--font-playfair)] text-accent mb-4">
-            Unsere <span className="text-primary">Speisekarte</span>
+    <section
+      id="speisekarte"
+      ref={ref}
+      className={`py-20 sm:py-32 bg-cream transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}
+    >
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        <div className="text-center mb-14 sm:mb-20">
+          <div className="eyebrow mb-4">Unsere Karte</div>
+          <h2 className="font-[family-name:var(--font-playfair)] font-semibold text-[clamp(2rem,4.5vw,3.75rem)] leading-[1.05] text-ink">
+            Kroatien trifft
+            <span className="block italic font-normal text-primary">Italien.</span>
           </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Authentische türkische Gerichte, frisch zubereitet mit
-            traditionellen Rezepten und den besten Zutaten.
-          </p>
-          {/* QR code hint */}
-          <p className="text-sm text-gray-400 mt-3">
-            📱 Speisekarte als QR-Code?{" "}
-            <a
-              href="/speisekarte"
-              className="text-primary hover:text-primary-dark underline"
-            >
-              Hier klicken
-            </a>
+          <p className="text-ink/60 text-lg mt-6 max-w-2xl mx-auto leading-relaxed">
+            Hausgemachte Gerichte nach traditionellen Rezepten – frisch, ehrlich,
+            mit den besten Zutaten der Region.
           </p>
         </div>
 
-        {/* Category tabs */}
-        <div className="flex overflow-x-auto gap-2 pb-4 mb-8 scrollbar-hide justify-start sm:justify-center">
+        <div className="flex overflow-x-auto gap-1.5 pb-5 mb-12 scrollbar-hide justify-start sm:justify-center border-b hairline">
           {menuData.map((category) => (
             <button
               key={category.id}
               onClick={() => setActiveCategory(category.id)}
-              className={`flex-shrink-0 flex items-center gap-2 px-5 py-3 rounded-full text-sm font-semibold transition-all ${
-                activeCategory === category.id
-                  ? "bg-primary text-white shadow-lg shadow-primary/30"
-                  : "bg-warm-gray text-gray-700 hover:bg-gray-200"
-              }`}
+              className={`flex-shrink-0 px-5 py-3 text-[0.82rem] font-medium tracking-wide transition-all border-b-2 -mb-px ${activeCategory === category.id
+                  ? "border-primary text-ink"
+                  : "border-transparent text-ink/50 hover:text-ink/80"
+                }`}
             >
-              <span className="text-lg">{category.icon}</span>
               {category.name}
             </button>
           ))}
         </div>
 
-        {/* Menu items grid */}
         {activeMenu && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-14 gap-y-2">
             {activeMenu.items.map((item, idx) => (
               <div
                 key={idx}
-                className="flex justify-between items-start gap-4 p-4 rounded-xl bg-cream hover:bg-warm-gray transition-colors border border-transparent hover:border-secondary/30"
+                className="flex justify-between items-baseline gap-6 py-5 border-b hairline"
               >
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <h3 className="font-bold text-accent">{item.name}</h3>
+                    <h3 className="font-[family-name:var(--font-playfair)] text-lg text-ink">{item.name}</h3>
                     {item.allergens && item.allergens.length > 0 && (
                       <div className="flex gap-1">
                         {item.allergens.map((a) => (
                           <span
                             key={a}
                             title={allergenLabels[a] ?? a}
-                            className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-gray-200 text-[10px] font-bold text-gray-600"
+                            className="inline-flex items-center justify-center w-4 h-4 rounded-full text-[9px] font-semibold text-ink/50 border hairline"
                           >
                             {a}
                           </span>
@@ -93,28 +86,25 @@ export default function Menu() {
                     )}
                   </div>
                   {item.description && (
-                    <p className="text-sm text-gray-500 mt-1">
+                    <p className="text-[0.88rem] text-ink/55 mt-1 leading-relaxed">
                       {item.description}
                     </p>
                   )}
                 </div>
-                <span className="text-lg font-bold text-primary whitespace-nowrap">
-                  {item.price.toFixed(2).replace(".", ",")} &euro;
+                <span className="font-[family-name:var(--font-playfair)] text-lg text-primary whitespace-nowrap tabular-nums">
+                  {item.price.toFixed(2).replace(".", ",")}
                 </span>
               </div>
             ))}
           </div>
         )}
 
-        {/* Allergen legend */}
-        <div className="mt-12 p-6 bg-warm-gray rounded-2xl">
-          <h3 className="font-bold text-sm uppercase tracking-wider text-gray-500 mb-3">
-            Allergene
-          </h3>
-          <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-600">
+        <div className="mt-16 pt-10 border-t hairline">
+          <div className="eyebrow mb-4">Allergene</div>
+          <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink/60">
             {Object.entries(allergenLabels).map(([key, label]) => (
               <span key={key}>
-                <span className="font-bold text-accent">{key}</span> = {label}
+                <span className="font-semibold text-ink">{key}</span> · {label}
               </span>
             ))}
           </div>

@@ -1,111 +1,74 @@
+"use client";
+
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+
 export default function Location() {
+  const { ref, isVisible } = useScrollAnimation<HTMLElement>();
+
   return (
-    <section id="standort" className="py-16 sm:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl sm:text-5xl font-bold font-[family-name:var(--font-playfair)] text-accent mb-4">
-            Besuchen Sie <span className="text-primary">uns</span>
+    <section
+      id="standort"
+      ref={ref}
+      className={`py-20 sm:py-32 bg-white transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}
+    >
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+        <div className="text-center mb-14 sm:mb-20">
+          <div className="eyebrow mb-4">Besuchen Sie uns</div>
+          <h2 className="font-[family-name:var(--font-playfair)] font-semibold text-[clamp(2rem,4.5vw,3.5rem)] leading-[1.05] text-ink">
+            In Schlierbach,
+            <span className="block italic font-normal text-primary">Bezirk Kirchdorf.</span>
           </h2>
-          <p className="text-gray-600 text-lg">
-            Wir freuen uns auf Ihren Besuch!
-          </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Info cards */}
-          <div className="space-y-6">
-            {/* Address */}
-            <div className="bg-cream rounded-2xl p-6 flex items-start gap-4">
-              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                <span className="text-2xl">📍</span>
-              </div>
-              <div>
-                <h3 className="font-bold text-accent text-lg">Adresse</h3>
-                <p className="text-gray-600 mt-1">
-                  Salzburger Str. 102a
-                  <br />
-                  4600 Wels, Österreich
-                </p>
-              </div>
+        <div className="grid md:grid-cols-2 gap-10 lg:gap-16">
+          <div className="grid sm:grid-cols-2 gap-6 self-start">
+            <div className="border-t border-ink pt-6">
+              <div className="eyebrow mb-2">Adresse</div>
+              <p className="text-ink/75 leading-relaxed">
+                Schöngrubstraße 2<br />4553 Schlierbach, Österreich
+              </p>
             </div>
-
-            {/* Phone */}
-            <div className="bg-cream rounded-2xl p-6 flex items-start gap-4">
-              <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                <span className="text-2xl">📞</span>
-              </div>
-              <div>
-                <h3 className="font-bold text-accent text-lg">
-                  Telefon / WhatsApp
-                </h3>
-                <a
-                  href="tel:+436603440568"
-                  className="text-primary hover:text-primary-dark font-semibold text-lg mt-1 block"
-                >
-                  +43 660 344 05 68
+            <div className="border-t border-ink pt-6">
+              <div className="eyebrow mb-2">Telefon</div>
+              <a href="tel:+4346512991888" className="text-ink hover:text-primary transition-colors tabular-nums">
+                04651 / 299 18 88
+              </a>
+              <div className="mt-1">
+                <a href="tel:+436818181040" className="text-ink/60 hover:text-primary transition-colors text-sm tabular-nums">
+                  +43 681 818 104 08
                 </a>
               </div>
             </div>
-
-            {/* Hours */}
-            <div className="bg-cream rounded-2xl p-6 flex items-start gap-4">
-              <div className="w-12 h-12 bg-secondary/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                <span className="text-2xl">🕐</span>
+            <div className="border-t border-ink pt-6 sm:col-span-2">
+              <div className="eyebrow mb-3">Öffnungszeiten</div>
+              <div className="text-ink/75 space-y-1.5 tabular-nums">
+                <div className="flex justify-between gap-6"><span>Mo, Di, Mi</span><span>11:00 – 14:00 · 17:00 – 22:00</span></div>
+                <div className="flex justify-between gap-6"><span>Do</span><span className="text-primary">Ruhetag</span></div>
+                <div className="flex justify-between gap-6"><span>Fr</span><span>17:00 – 22:00</span></div>
+                <div className="flex justify-between gap-6"><span>Sa, So</span><span>11:00 – 14:00 · 17:00 – 22:00</span></div>
               </div>
-              <div>
-                <h3 className="font-bold text-accent text-lg">
-                  Öffnungszeiten
-                </h3>
-                <div className="text-gray-600 mt-2 space-y-1">
-                  <div className="flex justify-between gap-8">
-                    <span>Täglich</span>
-                    <span className="font-semibold">08:00 – 20:00</span>
-                  </div>
-                </div>
-              </div>
+              <p className="text-xs text-ink/50 mt-3">Warme Küche bis 21:00 Uhr</p>
             </div>
-
-            {/* Social */}
-            <div className="bg-cream rounded-2xl p-6 flex items-start gap-4">
-              <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                <span className="text-2xl">👍</span>
-              </div>
-              <div>
-                <h3 className="font-bold text-accent text-lg">Social Media</h3>
-                <a
-                  href="https://www.instagram.com/istanbul.restaurantwels/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:text-primary-dark font-semibold mt-1 block"
-                >
-                  Instagram: @istanbul.restaurantwels
-                </a>
-                <span className="text-xs text-gray-400">
-                  1.654 Follower
-                </span>
-                <a
-                  href="https://www.facebook.com/istanbul.restaurant.2023/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:text-primary-dark font-semibold mt-1 block"
-                >
-                  Facebook: istanbul.restaurant.2023
-                </a>
+            <div className="border-t border-ink pt-6 sm:col-span-2">
+              <div className="eyebrow mb-2">Gut zu wissen</div>
+              <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink/70">
+                <span>· Nur Barzahlung</span>
+                <span>· Reservierung empfohlen</span>
+                <span>· Sitzplätze im Freien</span>
               </div>
             </div>
           </div>
 
-          {/* Google Maps */}
-          <div className="rounded-2xl overflow-hidden shadow-xl h-full min-h-[400px]">
+          <div className="overflow-hidden shadow-xl min-h-[480px] bg-warm-gray">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2672.0!2d14.0115!3d48.1545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4773a5a0a0a0a0a0%3A0x0!2sSalzburger+Str.+102a%2C+4600+Wels%2C+Austria!5e0!3m2!1sde!2sat!4v1"
+              src="https://www.google.com/maps?q=Sch%C3%B6ngrubstra%C3%9Fe+2%2C+4553+Schlierbach%2C+Austria&output=embed"
               width="100%"
               height="100%"
-              style={{ border: 0, minHeight: "400px" }}
+              style={{ border: 0, minHeight: "480px", filter: "grayscale(0.2) contrast(0.95)" }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Istanbul Restaurant Wels Standort"
+              title="Mia Mon Schlierbach Standort"
             />
           </div>
         </div>

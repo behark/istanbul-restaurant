@@ -1,13 +1,16 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-primary: #B91C1C;
-  --color-primary-dark: #991B1B;
-  --color-secondary: #D4A017;
-  --color-secondary-dark: #B8860B;
-  --color-accent: #3C1A00;
-  --color-cream: #FFF8F0;
-  --color-warm-gray: #F5F0EB;
+  --color-primary: #A63D2A;
+  --color-primary-dark: #7E2D1E;
+  --color-secondary: #C9A455;
+  --color-secondary-dark: #A5843F;
+  --color-accent: #14231D;
+  --color-ink: #1B1D1B;
+  --color-muted: #6B6B67;
+  --color-cream: #F7F2E9;
+  --color-warm-gray: #EDE6D7;
+  --color-hairline: #DDD4BF;
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-display: 'Playfair Display', Georgia, serif;
 }
@@ -18,11 +21,12 @@ html {
 
 body {
   background: var(--color-cream);
-  color: #1a1a1a;
+  color: var(--color-ink);
   font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-/* Hide horizontal scrollbar on category tabs */
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -31,7 +35,46 @@ body {
   display: none;
 }
 
-/* Smooth section transitions */
 section {
   scroll-margin-top: 5rem;
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-secondary-dark);
+}
+
+.hairline {
+  border-color: var(--color-hairline);
+}
+
+@keyframes kenburns {
+  0%   { transform: scale(1.05) translate3d(0, 0, 0); }
+  100% { transform: scale(1.15) translate3d(-1.2%, -1.2%, 0); }
+}
+.kenburns {
+  animation: kenburns 18s ease-in-out infinite alternate;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translate3d(0, 16px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+.fade-up { animation: fadeUp 900ms ease-out both; }
+.fade-up-1 { animation-delay: 80ms; }
+.fade-up-2 { animation-delay: 220ms; }
+.fade-up-3 { animation-delay: 360ms; }
+.fade-up-4 { animation-delay: 500ms; }
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  transition: opacity 700ms ease-out, transform 700ms ease-out;
+}
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
 }
