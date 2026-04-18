@@ -13,6 +13,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://miamon.at"),
   title: "Mia Mon Restaurant Schlierbach | Kroatische & Italienische Küche",
   description:
     "Mia Mon in Schlierbach – kroatische und italienische Küche. Ćevapčići, Schnitzel, hausgemachte Nudeln und Pizza aus dem Holzofen. Täglich frisch zubereitet.",
@@ -36,7 +37,7 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Restaurant",
     name: "Mia Mon Restaurant",
-    image: "https://mia-mon.at/images/hero-interior.jpg",
+    image: "https://miamon.at/images/hero-interior.jpg",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Schöngrubstraße 2",
@@ -59,7 +60,8 @@ export default function RootLayout({
       ratingValue: "4.8",
       reviewCount: "31",
     },
-    url: "https://mia-mon.at",
+    url: "https://miamon.at",
+    email: "info@miamon.at",
   };
 
   return (

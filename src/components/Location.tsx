@@ -39,6 +39,12 @@ export default function Location() {
                 </a>
               </div>
             </div>
+            <div className="border-t border-ink pt-6">
+              <div className="eyebrow mb-2">E-Mail</div>
+              <a href="mailto:info@miamon.at" className="text-ink hover:text-primary transition-colors text-sm">
+                info@miamon.at
+              </a>
+            </div>
             <div className="border-t border-ink pt-6 sm:col-span-2">
               <div className="eyebrow mb-3">Öffnungszeiten</div>
               <div className="text-ink/75 space-y-1.5 tabular-nums">

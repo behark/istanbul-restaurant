@@ -30,11 +30,10 @@ export default function Contact() {
           <span className="block italic font-normal text-[#E5C878]">einfach und direkt.</span>
         </h2>
         <p className="text-white/65 text-lg mt-6 max-w-xl mx-auto leading-relaxed">
-          Rufen Sie uns an oder schreiben Sie auf Facebook – wir melden uns
-          so schnell wie möglich.
+          Rufen Sie uns an, schreiben Sie eine E-Mail oder kontaktieren Sie uns auf Facebook – wir melden uns so schnell wie möglich.
         </p>
 
-        <div className="grid sm:grid-cols-3 gap-px mt-12 bg-white/10">
+        <div className="grid sm:grid-cols-4 gap-px mt-12 bg-white/10">
           <a
             href="tel:+4346512991888"
             className="group bg-[#14231D] hover:bg-[#1E2F28] transition-colors p-8 text-left"
@@ -60,12 +59,24 @@ export default function Contact() {
           </a>
 
           <a
+            href="mailto:info@miamon.at"
+            className="group bg-[#14231D] hover:bg-[#1E2F28] transition-colors p-8 text-left"
+          >
+            <div className="eyebrow text-[#E5C878] mb-3">03</div>
+            <div className="font-[family-name:var(--font-playfair)] text-2xl mb-1">E-Mail</div>
+            <div className="text-white/55 text-sm">info@miamon.at</div>
+            <div className="mt-5 text-xs uppercase tracking-[0.2em] text-white/40 group-hover:text-[#E5C878] transition-colors">
+              Schreiben →
+            </div>
+          </a>
+
+          <a
             href="https://www.facebook.com/share/1DL1CpVJ8D/"
             target="_blank"
             rel="noopener noreferrer"
             className="group bg-[#14231D] hover:bg-[#1E2F28] transition-colors p-8 text-left"
           >
-            <div className="eyebrow text-[#E5C878] mb-3">03</div>
+            <div className="eyebrow text-[#E5C878] mb-3">04</div>
             <div className="font-[family-name:var(--font-playfair)] text-2xl mb-1">Facebook</div>
             <div className="text-white/55 text-sm">Nachricht senden</div>
             <div className="mt-5 text-xs uppercase tracking-[0.2em] text-white/40 group-hover:text-[#E5C878] transition-colors">

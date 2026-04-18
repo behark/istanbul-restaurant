@@ -34,6 +34,7 @@ export default function Footer() {
               <li>Schöngrubstraße 2</li>
               <li>4553 Schlierbach, Österreich</li>
               <li><a href="tel:+4346512991888" className="hover:text-[#E5C878] transition-colors tabular-nums">04651 / 299 18 88</a></li>
+              <li><a href="mailto:info@miamon.at" className="hover:text-[#E5C878] transition-colors">info@miamon.at</a></li>
             </ul>
           </div>
 
