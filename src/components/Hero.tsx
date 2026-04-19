@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-[#14231D]"
+      className="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-[#14231D] pt-24 sm:pt-28 pb-12"
     >
       <div className="absolute inset-0 kenburns" aria-hidden>
         <Image
