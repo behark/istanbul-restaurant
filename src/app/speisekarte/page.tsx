@@ -1,96 +1,129 @@
+import type { Metadata } from "next";
+import MenuExplorer from "./MenuExplorer";
 import { menuData } from "@/data/menu";
+import { allergenLabels } from "@/data/allergens";
+import { restaurantInfo } from "@/data/info";
 
-const allergenLabels: Record<string, string> = {
-  A: "Gluten",
-  B: "Krebstiere",
-  C: "Eier",
-  D: "Fisch",
-  E: "Erdnüsse",
-  F: "Soja",
-  G: "Milch",
-  H: "Schalenfrüchte",
-  L: "Sellerie",
-  M: "Senf",
-  N: "Sesam",
-  O: "Sulfite",
-  P: "Lupinen",
-  R: "Weichtiere",
+export const metadata: Metadata = {
+  title: "Speisekarte | Pizzeria Mia-Mon",
+  description:
+    "Die aktuelle Speisekarte der Pizzeria Mia-Mon: Suppen, Salate, Burger, Pizza aus dem Holzofen, Pasta, Hauptgerichte, Kindermenü, Getränke und Weine.",
+  alternates: { canonical: "/speisekarte" },
+  openGraph: {
+    title: "Speisekarte – Pizzeria Mia-Mon",
+    description:
+      "Frisch zubereitete Speisen, Pizza aus dem Holzofen, Pasta und mehr.",
+    url: "https://miamon.at/speisekarte",
+    type: "website",
+    locale: "de_AT",
+  },
 };
 
-export default function Speisekarte() {
+export default function SpeisekartePage() {
+  const menuJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Menu",
+    name: "Speisekarte Pizzeria Mia-Mon",
+    inLanguage: "de-AT",
+    hasMenuSection: menuData.map((cat) => ({
+      "@type": "MenuSection",
+      name: cat.name,
+      hasMenuItem: cat.items.map((it) => ({
+        "@type": "MenuItem",
+        name: it.name,
+        ...(it.description ? { description: it.description } : {}),
+        ...(it.price !== undefined
+          ? { offers: { "@type": "Offer", price: it.price.toFixed(2), priceCurrency: "EUR" } }
+          : it.variants && it.variants.length > 0
+            ? {
+                offers: it.variants.map((v) => ({
+                  "@type": "Offer",
+                  price: v.price.toFixed(2),
+                  priceCurrency: "EUR",
+                  description: v.label,
+                })),
+              }
+            : {}),
+      })),
+    })),
+  };
+
   return (
     <main className="min-h-screen bg-cream">
-      <div className="bg-[#14231D] text-white py-10 px-4 text-center">
-        <div className="eyebrow text-[#E5C878] mb-2">Speisekarte</div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(menuJsonLd) }}
+      />
+
+      <div className="bg-[#14231D] text-white py-10 px-4 text-center print:bg-white print:text-ink">
+        <div className="eyebrow text-[#E5C878] mb-2 print:text-primary">Speisekarte</div>
         <h1 className="font-[family-name:var(--font-playfair)] text-3xl sm:text-4xl font-semibold">
-          Mia <span className="italic opacity-70">Mon</span>
+          Pizzeria <span className="italic opacity-80">Mia-Mon</span>
         </h1>
-        <p className="text-white/60 text-sm mt-2">
-          Schöngrubstraße 2, 4553 Schlierbach · 04651 / 299 18 88
+        <p className="text-white/70 text-sm mt-3 max-w-md mx-auto">
+          {restaurantInfo.welcome.title}
         </p>
+        <div className="text-xs text-white/55 mt-4 space-y-0.5">
+          <div>
+            {restaurantInfo.hours.standard.days}: {restaurantInfo.hours.standard.lunch} & {restaurantInfo.hours.standard.dinner}
+          </div>
+          <div>
+            {restaurantInfo.hours.friday.days}: {restaurantInfo.hours.friday.dinner}
+          </div>
+          <div className="text-[#E5C878]">{restaurantInfo.hours.closed}</div>
+          <div className="italic">{restaurantInfo.hours.note}</div>
+        </div>
+        <a
+          href={restaurantInfo.phoneTel}
+          className="inline-block mt-4 text-sm text-white/80 hover:text-white underline underline-offset-4"
+        >
+          📞 {restaurantInfo.phone}
+        </a>
       </div>
 
-      <div className="max-w-2xl mx-auto px-5 py-8">
-        {menuData.map((category) => (
-          <div key={category.id} className="mb-10">
-            <div className="flex items-center gap-2 mb-5 pb-3 border-b hairline">
-              <h2 className="text-lg font-[family-name:var(--font-playfair)] text-ink">
-                {category.name}
-              </h2>
-              <span className="text-xs text-ink/40 ml-auto uppercase tracking-wider">
-                {category.nameEn}
-              </span>
-            </div>
+      <MenuExplorer />
 
-            <div className="space-y-4">
-              {category.items.map((item, idx) => (
-                <div key={idx} className="flex justify-between items-start gap-3">
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-1.5 flex-wrap">
-                      <span className="font-medium text-ink text-[0.95rem]">
-                        {item.name}
-                      </span>
-                      {item.allergens && item.allergens.length > 0 && (
-                        <span className="text-[10px] text-ink/40">
-                          ({item.allergens.join(",")})
-                        </span>
-                      )}
-                    </div>
-                    {item.description && (
-                      <p className="text-xs text-ink/55 mt-0.5 leading-snug">
-                        {item.description}
-                      </p>
-                    )}
-                  </div>
-                  <span className="font-[family-name:var(--font-playfair)] text-base text-primary whitespace-nowrap tabular-nums">
-                    {item.price.toFixed(2).replace(".", ",")} €
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-
-        <div className="mt-6 p-4 border hairline rounded-sm text-xs bg-white">
-          <div className="eyebrow mb-2">Allergene</div>
-          <div className="flex flex-wrap gap-x-4 gap-y-1 text-ink/70">
+      <div className="max-w-3xl mx-auto px-5 pb-12">
+        <details className="mt-4 p-4 border hairline rounded-md bg-white">
+          <summary className="cursor-pointer font-semibold text-sm text-ink">
+            Allergene (A–R)
+          </summary>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1 mt-3 text-xs text-ink/70">
             {Object.entries(allergenLabels).map(([key, label]) => (
-              <span key={key}>
-                <span className="font-semibold text-ink">{key}</span> · {label}
-              </span>
+              <div key={key}>
+                <span className="font-semibold text-ink mr-1.5">{key}</span>
+                {label}
+              </div>
             ))}
           </div>
-        </div>
+        </details>
 
-        <div className="text-center mt-8 pb-10">
-          <p className="text-xs text-ink/45">
+        <div className="text-center mt-8">
+          <a
+            href={restaurantInfo.phoneTel}
+            className="inline-block bg-primary text-white px-6 py-3 rounded-full text-sm font-semibold shadow-sm hover:bg-primary-dark transition print:hidden"
+          >
+            📞 Reservieren – {restaurantInfo.phone}
+          </a>
+          <p className="text-xs text-ink/45 mt-6">
             Alle Preise in EUR inkl. MwSt. · Irrtümer und Preisänderungen vorbehalten.
           </p>
-          <p className="text-xs text-ink/45 mt-1">
-            © {new Date().getFullYear()} Mia Mon Restaurant Schlierbach
+          <p className="text-xs text-ink/45 mt-1 italic">
+            {restaurantInfo.closing} – {restaurantInfo.team}
+          </p>
+          <p className="text-xs text-ink/35 mt-4">
+            © {new Date().getFullYear()} Pizzeria Mia-Mon
           </p>
         </div>
       </div>
+
+      <a
+        href={restaurantInfo.phoneTel}
+        className="fixed bottom-5 right-5 sm:hidden bg-primary text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center text-xl print:hidden"
+        aria-label="Anrufen"
+      >
+        📞
+      </a>
     </main>
   );
 }
