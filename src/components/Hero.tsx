@@ -39,7 +39,7 @@ export default function Hero() {
         </h1>
 
         <p className="max-w-2xl mx-auto text-lg sm:text-xl text-white/75 font-light leading-relaxed fade-up fade-up-3">
-          Kroatische & italienische Küche – Ćevapčići vom Grill, Pasta nach
+          Kroatische Küche – Ćevapčići vom Grill, Pasta nach
           Großmutters Rezept, Pizza aus dem Holzofen.
         </p>
 

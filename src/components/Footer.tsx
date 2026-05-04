@@ -13,7 +13,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-white/55 text-sm leading-relaxed max-w-xs">
-              Kroatische & italienische Küche in Schlierbach. Frisch, ehrlich und mit Liebe zubereitet.
+              Kroatische Küche in Schlierbach. Frisch, ehrlich und mit Liebe zubereitet.
             </p>
           </div>
 

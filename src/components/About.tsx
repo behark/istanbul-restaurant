@@ -23,8 +23,8 @@ export default function About() {
             </h2>
             <p className="text-ink/65 text-[1.02rem] leading-relaxed mt-7">
               Mia Mon hat im Dezember 2025 in Schlierbach eröffnet und vereint
-              das Beste aus zwei Welten: traditionelle kroatische Küche vom Grill
-              und italienische Klassiker aus dem Holzofen. Unsere Gerichte
+              das Beste: traditionelle kroatische Küche vom Grill
+              und Klassiker aus dem Holzofen. Unsere Gerichte
               werden täglich frisch zubereitet – ehrlich, bodenständig und mit viel Liebe.
             </p>
             <p className="text-ink/65 text-[1.02rem] leading-relaxed mt-5">

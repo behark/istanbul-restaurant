@@ -14,15 +14,15 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://miamon.at"),
-  title: "Mia Mon Restaurant Schlierbach | Kroatische & Italienische Küche",
+  title: "Mia Mon Restaurant Schlierbach | Kroatische Küche",
   description:
-    "Mia Mon in Schlierbach – kroatische und italienische Küche. Ćevapčići, Schnitzel, hausgemachte Nudeln und Pizza aus dem Holzofen. Täglich frisch zubereitet.",
+    "Mia Mon in Schlierbach – kroatische Küche. Ćevapčići, Schnitzel, hausgemachte Nudeln und Pizza aus dem Holzofen. Täglich frisch zubereitet.",
   keywords:
     "Mia Mon, Restaurant Schlierbach, Kroatisches Restaurant Oberösterreich, Pizza Schlierbach, Cevapcici Kirchdorf, Holzofen Pizza",
   openGraph: {
     title: "Mia Mon Restaurant Schlierbach",
     description:
-      "Kroatische & italienische Küche in Schlierbach. Pizza aus dem Holzofen, Ćevapčići, hausgemachte Nudeln.",
+      "Kroatische Küche in Schlierbach. Pizza aus dem Holzofen, Ćevapčići, hausgemachte Nudeln.",
     locale: "de_AT",
     type: "website",
   },
@@ -46,7 +46,7 @@ export default function RootLayout({
       addressCountry: "AT",
     },
     telephone: "+4368181810408",
-    servesCuisine: ["Italienisch", "Österreichisch", "Pizza"],
+    servesCuisine: ["Kroatisch", "Österreichisch", "Pizza"],
     priceRange: "$$",
     hasMenu: "https://miamon.at/speisekarte",
     openingHoursSpecification: [
