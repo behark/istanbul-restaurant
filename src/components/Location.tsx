@@ -30,12 +30,12 @@ export default function Location() {
             </div>
             <div className="border-t border-ink pt-6">
               <div className="eyebrow mb-2">Telefon</div>
-              <a href="tel:+4346512991888" className="text-ink hover:text-primary transition-colors tabular-nums">
-                04651 / 299 18 88
+              <a href="tel:+4368181810408" className="text-ink hover:text-primary transition-colors tabular-nums">
+                +43 681 818 10408
               </a>
               <div className="mt-1">
-                <a href="tel:+436818181040" className="text-ink/60 hover:text-primary transition-colors text-sm tabular-nums">
-                  +43 681 818 104 08
+                <a href="tel:+4368181810408" className="text-ink/60 hover:text-primary transition-colors text-sm tabular-nums">
+                  +43 681 818 10408
                 </a>
               </div>
             </div>

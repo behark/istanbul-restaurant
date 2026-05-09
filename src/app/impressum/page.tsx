@@ -31,9 +31,9 @@ export default function Impressum() {
           <section>
             <h2 className="text-xl font-bold text-ink">Kontakt</h2>
             <p>
-              Telefon: 04651 / 299 18 88
+              Telefon: +43 681 818 10408
               <br />
-              Mobil: +43 681 818 104 08
+              Mobil: +43 681 818 10408
             </p>
           </section>
 

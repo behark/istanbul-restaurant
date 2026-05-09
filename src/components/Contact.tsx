@@ -35,24 +35,24 @@ export default function Contact() {
 
         <div className="grid sm:grid-cols-4 gap-px mt-12 bg-white/10">
           <a
-            href="tel:+4346512991888"
+            href="tel:+4368181810408"
             className="group bg-[#14231D] hover:bg-[#1E2F28] transition-colors p-8 text-left"
           >
             <div className="eyebrow text-[#E5C878] mb-3">01</div>
             <div className="font-[family-name:var(--font-playfair)] text-2xl mb-1">Anrufen</div>
-            <div className="text-white/55 text-sm tabular-nums">04651 / 299 18 88</div>
+            <div className="text-white/55 text-sm tabular-nums">+43 681 818 10408</div>
             <div className="mt-5 text-xs uppercase tracking-[0.2em] text-white/40 group-hover:text-[#E5C878] transition-colors">
               Wählen →
             </div>
           </a>
 
           <a
-            href="tel:+436818181040"
+            href="tel:+4368181810408"
             className="group bg-[#14231D] hover:bg-[#1E2F28] transition-colors p-8 text-left"
           >
             <div className="eyebrow text-[#E5C878] mb-3">02</div>
             <div className="font-[family-name:var(--font-playfair)] text-2xl mb-1">Mobil</div>
-            <div className="text-white/55 text-sm tabular-nums">+43 681 818 104 08</div>
+            <div className="text-white/55 text-sm tabular-nums">+43 681 818 10408</div>
             <div className="mt-5 text-xs uppercase tracking-[0.2em] text-white/40 group-hover:text-[#E5C878] transition-colors">
               Wählen →
             </div>

@@ -69,7 +69,7 @@ export default function Hero() {
             </svg>
           </a>
           <a
-            href="tel:+4346512991888"
+            href="tel:+4368181810408"
             className="inline-flex items-center gap-2 border border-white/25 hover:border-white/60 text-white font-medium px-7 py-3.5 rounded-full text-[0.95rem] tracking-wide transition-all w-full sm:w-auto justify-center hover:bg-white/5"
           >
             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -82,10 +82,10 @@ export default function Hero() {
         <div className="mt-16 flex flex-col items-center gap-3 fade-up fade-up-4">
           <p className="eyebrow text-white/50">Reservierung empfohlen</p>
           <a
-            href="tel:+4346512991888"
+            href="tel:+4368181810408"
             className="text-white/80 hover:text-[#E5C878] text-sm font-semibold tracking-wide transition-colors tabular-nums"
           >
-            04651 / 299 18 88
+            +43 681 818 10408
           </a>
         </div>
       </div>
